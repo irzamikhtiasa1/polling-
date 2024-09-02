@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polling Finalis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .finalis {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .finalis h3 {
+            margin: 0;
+        }
+        .finalis p {
+            margin: 5px 0;
+        }
+        .vote-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="finalis">
+        <h3>Finalis 1</h3>
+        <p>Deskripsi singkat tentang finalis 1.</p>
+        <button class="vote-btn" onclick="openVoteForm('Finalis 1')">Vote</button>
+    </div>
+
+    <div class="finalis">
+        <h3>Finalis 2</h3>
+        <p>Deskripsi singkat tentang finalis 2.</p>
+        <button class="vote-btn" onclick="openVoteForm('Finalis 2')">Vote</button>
+    </div>
+
+    <!-- Tambahkan finalis lainnya di sini -->
+
+    <script>
+        function openVoteForm(finalis) {
+            // Mengarahkan ke halaman voting untuk finalis yang dipilih
+            window.location.href = `vote.html?finalis=${encodeURIComponent(finalis)}`;
+        }
+    </script>
+
+</body>
+</html>
