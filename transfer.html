@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Pembayaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Transfer Pembayaran</h3>
+        <p>Terima kasih <span id="userName"></span>, silakan transfer sejumlah <span id="totalPrice"></span> ke rekening berikut:</p>
+        <p><strong>Nomor Rekening:</strong> 1234567890</p>
+        <p><strong>Bank:</strong> Bank Contoh</p>
+        <p><strong>Atas Nama:</strong> Polling Finalis</p>
+        <button onclick="confirmTransfer()">Saya Sudah Transfer</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const price = urlParams.get('price');
+            document.getElementById('userName').textContent = name;
+            document.getElementById('totalPrice').textContent = price;
+        });
+
+        function confirmTransfer() {
+            // Mengarahkan ke halaman konfirmasi
+            window.location.href = 'confirmation.html';
+        }
+    </script>
+
+</body>
+</html>
