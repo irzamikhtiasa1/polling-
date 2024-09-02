@@ -1,1 +1,2 @@
-# polling-
+# polling-vinalis
+# contoh-sederhana
