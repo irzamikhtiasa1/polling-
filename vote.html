@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote untuk Finalis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h3>Vote untuk <span id="finalis-name"></span></h3>
+        <form id="voteForm">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="voteCount">Jumlah Vote:</label>
+            <input type="number" id="voteCount" name="voteCount" min="1" value="1" required oninput="updatePrice()">
+
+            <label for="price">Estimasi Harga:</label>
+            <input type="text" id="price" name="price" readonly>
+
+            <button type="button" onclick="confirmVote()">Konfirmasi</button>
+        </form>
+    </div>
+
+    <script>
+        const PRICE_PER_VOTE = 15000;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const finalis = urlParams.get('finalis');
+            document.getElementById('finalis-name').textContent = finalis;
+            updatePrice();
+        });
+
+        function updatePrice() {
+            const voteCount = document.getElementById('voteCount').value;
+            const totalPrice = voteCount * PRICE_PER_VOTE;
+            document.getElementById('price').value = `Rp ${totalPrice.toLocaleString()}`;
+        }
+
+        function confirmVote() {
+            const name = document.getElementById('name').value;
+            const voteCount = document.getElementById('voteCount').value;
+            const price = document.getElementById('price').value;
+            
+            if (name && voteCount) {
+                // Arahkan ke halaman transfer
+                window.location.href = `transfer.html?finalis=${encodeURIComponent(document.getElementById('finalis-name').textContent)}&name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&voteCount=${voteCount}`;
+            }
+        }
+    </script>
+
+</body>
+</html>
