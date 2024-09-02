@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Terima Kasih!</h3>
+        <p>Transfer Anda berhasil dan <span id="finalis-name"></span> telah menerima <span id="voteCount"></span> vote baru!</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const finalis = urlParams.get('finalis');
+            const voteCount = urlParams.get('voteCount');
+            document.getElementById('finalis-name').textContent = finalis;
+            document.getElementById('voteCount').textContent = voteCount;
+        });
+    </script>
+
+</body>
+</html>
